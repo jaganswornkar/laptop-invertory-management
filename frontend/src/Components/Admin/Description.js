@@ -27,7 +27,7 @@ export class Description extends Component {
         data: this.state
       })
         .then(data => {
-          console.log("description updated ");
+          // console.log("description updated ");
           this.setState({ id: "", description: "" });
         })
         .catch(err => console.error(err));

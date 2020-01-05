@@ -54,7 +54,7 @@ app.post("/laptop_details", (req, res) => {
           res.json(data);
         })
         .catch(err => console.error(err));
-      console.log("data inserted into db", data);
+      console.log("data inserted into db");
     })
     .catch(err => console.log(err));
 });
@@ -199,7 +199,7 @@ app.post("/updateBatteryStatus", (req, res) => {
 
 // update description
 app.post("/updateDescription", (req, res) => {
-  console.log(req.body.data);
+  // console.log(req.body.data);
   db.laptops
     .update(
       {
@@ -219,7 +219,7 @@ app.post("/updateDescription", (req, res) => {
 
 // update Mac Address
 app.post("/newMac", (req, res) => {
-  console.log(req.body.data);
+  // console.log(req.body.data);
   db.laptops
     .update(
       {
@@ -239,7 +239,7 @@ app.post("/newMac", (req, res) => {
 
 // update IP Address
 app.post("/newIP", (req, res) => {
-  console.log(req.body.data);
+  // console.log(req.body.data);
   db.laptops
     .update(
       {
@@ -295,7 +295,7 @@ app.get("/getMaintenance/:id", (req, res) => {
       where: { laptop_id: laptopId }
     })
     .then(data => {
-      console.log(data);
+      // console.log(data);
       res.json(data);
     })
     .catch(err => console.error(err));
@@ -310,7 +310,7 @@ app.get("/getOwners/:id", (req, res) => {
       where: { laptop_id: laptopId }
     })
     .then(data => {
-      console.log(data);
+      // console.log(data);
       res.json(data);
     })
     .catch(err => console.error(err));
@@ -319,18 +319,18 @@ app.get("/getOwners/:id", (req, res) => {
 // post method to decode token
 app.post("/verifyToken", (req, res) => {
   const client = new OAuth2Client(
-    "472110929846-gquf8q2s18kj6k0ahk6l1a4pmcc7ir51.apps.googleusercontent.com"
+    "967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
   );
   async function verify() {
     const ticket = await client.verifyIdToken({
       idToken: req.body.token,
       audience:
-        "472110929846-gquf8q2s18kj6k0ahk6l1a4pmcc7ir51.apps.googleusercontent.com"
+        "967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
     });
     const payload = ticket.getPayload();
     const userid = payload["email"];
     // write your code here------
-    console.log(userid);
+    // console.log(userid);
     db.admins
       .findAll({
         raw: true,
@@ -352,13 +352,13 @@ app.post("/verifyToken", (req, res) => {
 // check the token for expire
 app.post("/checkToken", (req, res) => {
   const client = new OAuth2Client(
-    "472110929846-gquf8q2s18kj6k0ahk6l1a4pmcc7ir51.apps.googleusercontent.com"
+    "967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
   );
   async function verify() {
     const ticket = await client.verifyIdToken({
       idToken: req.body.token,
       audience:
-        "472110929846-gquf8q2s18kj6k0ahk6l1a4pmcc7ir51.apps.googleusercontent.com"
+        "967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
     });
     const payload = ticket.getPayload();
     const userid = payload["email"];

@@ -25,7 +25,7 @@ export class UpdateIP extends Component {
     if (this.state.id.length > 0) {
       Axios.post("http://13.234.154.77:8001/newIP", { data: this.state })
         .then(data => {
-          console.log("new IP Address posted");
+          // console.log("new IP Address posted");
           this.setState({ id: "", ip: "" });
         })
         .catch(err => console.error(err));

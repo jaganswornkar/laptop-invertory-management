@@ -28,7 +28,7 @@ export class Maintenance extends Component {
     if (this.state.id.length > 0) {
       Axios.post("http://13.234.154.77:8001/postMaintenance", { data: this.state })
         .then(data => {
-          console.log("maintenance details posted");
+          // console.log("maintenance details posted");
           this.setState({
             id: "",
             date: "",

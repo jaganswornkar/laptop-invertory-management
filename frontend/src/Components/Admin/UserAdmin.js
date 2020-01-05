@@ -24,7 +24,7 @@ export class UserAdmin extends Component {
     if (this.state.email.length > 0) {
       Axios.post("http://13.234.154.77:8001/newAdmin", { data: this.state })
         .then(data => {
-          console.log("new Admin posted");
+          // console.log("new Admin posted");
           this.setState({ email: "" });
         })
         .catch(err => console.error(err));

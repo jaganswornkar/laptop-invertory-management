@@ -6,11 +6,13 @@ import { Redirect } from "react-router";
 
 export default function Signin() {
   const responseGoogle = response => {
+    // console.log(response)
     const token = response.tokenObj.id_token;
+    // console.log(token)
     Axios.post("http://13.234.154.77:8001/verifyToken", { token: token })
       .then(data => {
         if (data.data !== "err") {
-          console.log("login successful");
+          // console.log("login successful");
           reactLocalStorage.set("token", token);
           window.location.reload();
         } else {

@@ -27,7 +27,7 @@ export class BatteryStatus extends Component {
         data: this.state
       })
         .then(data => {
-          console.log("battery status updated ");
+          // console.log("battery status updated ");
           this.setState({ id: "", battery: false });
         })
         .catch(err => console.error(err));

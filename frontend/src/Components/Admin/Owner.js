@@ -26,7 +26,7 @@ export class Owner extends Component {
     if (this.state.id.length > 0) {
       Axios.post("http://13.234.154.77:8001/newOwner", { data: this.state })
         .then(data => {
-          console.log("new owner posted");
+          // console.log("new owner posted");
           this.setState({ id: "", owner: "", date: "" });
         })
         .catch(err => console.error(err));

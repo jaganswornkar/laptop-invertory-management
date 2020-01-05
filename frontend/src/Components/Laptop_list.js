@@ -24,7 +24,7 @@ export class Laptop_list extends Component {
   }
 
   onClickHandler = (id) =>{
-    console.log('laptopId : ',id)
+    // console.log('laptopId : ',id)
     this.setState({laptopId:id})
   }
 

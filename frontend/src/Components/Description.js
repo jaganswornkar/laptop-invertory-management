@@ -22,7 +22,7 @@ export class Description extends Component {
     // get method to get laptop files
     Axios.get(`http://13.234.154.77:8001/laptopDescription/${laptopId}`)
       .then(data => {
-        console.log("laptop files : ", data.data);
+        // console.log("laptop files : ", data.data);
         this.setState({ files: data.data });
       })
       .catch(err => console.error(err));
@@ -30,7 +30,7 @@ export class Description extends Component {
     // get method to get maintenance details
     Axios.get(`http://13.234.154.77:8001/getMaintenance/${laptopId}`)
       .then(data => {
-        console.log("maintenance : ", data.data);
+        // console.log("maintenance : ", data.data);
         this.setState({ maintenance: data.data });
       })
       .catch(err => console.error(err));
@@ -38,7 +38,7 @@ export class Description extends Component {
     // get method to get owners details
     Axios.get(`http://13.234.154.77:8001/getOwners/${laptopId}`)
       .then(data => {
-        console.log("owners : ", data.data);
+        // console.log("owners : ", data.data);
         this.setState({ owners: data.data });
       })
       .catch(err => console.error(err));

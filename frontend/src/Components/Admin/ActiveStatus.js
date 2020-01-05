@@ -27,7 +27,7 @@ export class ActiveStatus extends Component {
         data: this.state
       })
         .then(data => {
-          console.log("active status updated ");
+          // console.log("active status updated ");
           this.setState({ id: "", active: false });
         })
         .catch(err => console.error(err));
