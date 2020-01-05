@@ -23,7 +23,7 @@ export class UpdateMac extends Component {
 
   onSubmitHandler = () => {
     if (this.state.id.length > 0) {
-      Axios.post("http://localhost:8001/newMac", { data: this.state })
+      Axios.post("http://13.234.154.77:8001/newMac", { data: this.state })
         .then(data => {
           console.log("new Mac Address posted");
           this.setState({ id: "", mac: "" });

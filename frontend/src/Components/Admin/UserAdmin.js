@@ -22,7 +22,7 @@ export class UserAdmin extends Component {
 
   onSubmitHandler = () => {
     if (this.state.email.length > 0) {
-      Axios.post("http://localhost:8001/newAdmin", { data: this.state })
+      Axios.post("http://13.234.154.77:8001/newAdmin", { data: this.state })
         .then(data => {
           console.log("new Admin posted");
           this.setState({ email: "" });

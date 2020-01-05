@@ -37,7 +37,7 @@ export class Controler extends Component {
 
   onSubmitHandler = () => {
     if (this.state.name.length > 0 && this.state.image.length > 0) {
-      Axios.post("http://localhost:8001/laptop_details", { data: this.state })
+      Axios.post("http://13.234.154.77:8001/laptop_details", { data: this.state })
         .then(data => {
           console.log(data.data);
           this.setState({

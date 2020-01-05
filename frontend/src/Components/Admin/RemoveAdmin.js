@@ -22,7 +22,7 @@ export class RemoveAdmin extends Component {
 
   onSubmitHandler = () => {
     if (this.state.email.length > 0) {
-      Axios.post("http://localhost:8001/removeAdmin", { data: this.state })
+      Axios.post("http://13.234.154.77:8001/removeAdmin", { data: this.state })
         .then(data => {
           if (data.data !== "err") {
             console.log("admon removed", data.data);

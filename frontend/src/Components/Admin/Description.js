@@ -23,7 +23,7 @@ export class Description extends Component {
 
   onSubmitHandler = () => {
     if (this.state.id.length > 0) {
-      Axios.post("http://localhost:8001/updateDescription", {
+      Axios.post("http://13.234.154.77:8001/updateDescription", {
         data: this.state
       })
         .then(data => {

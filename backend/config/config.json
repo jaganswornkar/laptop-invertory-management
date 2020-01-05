@@ -3,7 +3,7 @@
     "username": "root",
     "password": "jagan@jagan",
     "database": "laptopdb",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql",
     "operatorsAliases": false
   },
@@ -11,7 +11,7 @@
     "username": "root",
     "password": "jagan@jagan",
     "database": "laptopdb",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql",
     "operatorsAliases": false
   },
@@ -19,7 +19,7 @@
     "username": "root",
     "password": "jagan@jagan",
     "database": "laptopdb",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql",
     "operatorsAliases": false
   }

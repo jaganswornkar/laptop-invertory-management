@@ -18,7 +18,7 @@ export class GetAdmin extends Component {
     } else {
       this.setState({ toggle: true });
     }
-    Axios.get("http://localhost:8001/getAdmin")
+    Axios.get("http://13.234.154.77:8001/getAdmin")
       .then(data => {
         this.setState({ admin: data.data });
       })

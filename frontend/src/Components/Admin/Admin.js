@@ -31,7 +31,7 @@ export class Admin extends Component {
   }
   componentDidMount() {
     const token = reactLocalStorage.get("token");
-    Axios.post("http://localhost:8001/checkToken", { token: token })
+    Axios.post("http://13.234.154.77:8001/checkToken", { token: token })
       .then(data => {
         if (data.data === undefined) {
           reactLocalStorage.clear("token", "");

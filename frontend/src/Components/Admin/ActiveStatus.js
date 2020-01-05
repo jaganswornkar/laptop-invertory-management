@@ -23,7 +23,7 @@ export class ActiveStatus extends Component {
 
   onSubmitHandler = () => {
     if (this.state.id.length > 0) {
-      Axios.post("http://localhost:8001/updateActiveStatus", {
+      Axios.post("http://13.234.154.77:8001/updateActiveStatus", {
         data: this.state
       })
         .then(data => {

@@ -7,7 +7,7 @@ import { Redirect } from "react-router";
 export default function Signin() {
   const responseGoogle = response => {
     const token = response.tokenObj.id_token;
-    Axios.post("http://localhost:8001/verifyToken", { token: token })
+    Axios.post("http://13.234.154.77:8001/verifyToken", { token: token })
       .then(data => {
         if (data.data !== "err") {
           console.log("login successful");

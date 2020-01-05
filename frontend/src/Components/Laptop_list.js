@@ -15,7 +15,7 @@ export class Laptop_list extends Component {
   }
 
   componentDidMount() {
-    Axios.get("http://localhost:8001/getList")
+    Axios.get("http://13.234.154.77:8001/getList")
       .then(data => {
         this.setState({ List: data.data });
         this.props.files("GET_FILES", data.data);

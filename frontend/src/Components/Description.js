@@ -20,7 +20,7 @@ export class Description extends Component {
     const laptopId = this.props.match.params.id;
 
     // get method to get laptop files
-    Axios.get(`http://localhost:8001/laptopDescription/${laptopId}`)
+    Axios.get(`http://13.234.154.77:8001/laptopDescription/${laptopId}`)
       .then(data => {
         console.log("laptop files : ", data.data);
         this.setState({ files: data.data });
@@ -28,7 +28,7 @@ export class Description extends Component {
       .catch(err => console.error(err));
 
     // get method to get maintenance details
-    Axios.get(`http://localhost:8001/getMaintenance/${laptopId}`)
+    Axios.get(`http://13.234.154.77:8001/getMaintenance/${laptopId}`)
       .then(data => {
         console.log("maintenance : ", data.data);
         this.setState({ maintenance: data.data });
@@ -36,7 +36,7 @@ export class Description extends Component {
       .catch(err => console.error(err));
 
     // get method to get owners details
-    Axios.get(`http://localhost:8001/getOwners/${laptopId}`)
+    Axios.get(`http://13.234.154.77:8001/getOwners/${laptopId}`)
       .then(data => {
         console.log("owners : ", data.data);
         this.setState({ owners: data.data });
