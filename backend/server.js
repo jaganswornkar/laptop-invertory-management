@@ -329,8 +329,7 @@ app.post("/verifyToken", (req, res) => {
     });
     const payload = ticket.getPayload();
     const userid = payload["email"];
-    // write your code here------
-    // console.log(userid);
+    // write your code here--------
     db.admins
       .findAll({
         raw: true,
