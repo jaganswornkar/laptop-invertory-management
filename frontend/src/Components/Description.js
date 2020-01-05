@@ -145,7 +145,7 @@ export class Description extends Component {
                 <Typography>Owner : {file.owner}</Typography>
                 <Typography>RAM : {file.ram}</Typography>
                 <Typography>ROM : {file.rom}</Typography>
-                <Typography>Battery : {file.battery ? "Yes" : "No"}</Typography>
+                <Typography>Charger : {file.battery ? "Yes" : "No"}</Typography>
                 <Typography>Color : {file.color}</Typography>
                 <Typography>
                   Status : {file.active ? "Active" : "Deactivated"}

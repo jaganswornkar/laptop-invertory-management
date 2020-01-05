@@ -164,7 +164,7 @@ export class Controler extends Component {
                 />
               </CardContent>
               <CardContent>
-                Battery :{" "}
+                Charger :{" "}
                 <Checkbox
                   name="battery"
                   checked={this.state.battery}

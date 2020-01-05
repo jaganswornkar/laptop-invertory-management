@@ -46,7 +46,7 @@ export class BatteryStatus extends Component {
             fullWidth
             onClick={this.onClickHandler}
           >
-            Update battery status
+            Update Charger status
           </Button>
           {this.state.toggle ? (
             <div>
@@ -64,7 +64,7 @@ export class BatteryStatus extends Component {
               </CardContent>
 
               <CardContent>
-                Battery status :{" "}
+                Charger status :{" "}
                 <Checkbox
                   name="battery"
                   checked={this.state.battery}

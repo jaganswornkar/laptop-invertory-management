@@ -63,7 +63,7 @@ export class Laptop_list extends Component {
             <Typography align="left">Model : {e.name}</Typography>
             <Typography align="left">Owner : {e.owner}</Typography>
             <Typography align="left">
-              Battery : {e.battery ? "Yes" : "No"}
+            Charger : {e.battery ? "Yes" : "No"}
             </Typography>
           </List>
         </Card>
