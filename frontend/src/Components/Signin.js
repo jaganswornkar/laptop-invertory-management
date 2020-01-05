@@ -27,7 +27,7 @@ export default function Signin() {
   return (
     <div style={{ display: "flex", justifyContent: "center", margin: 20 }}>
       <GoogleLogin
-        clientId="472110929846-gquf8q2s18kj6k0ahk6l1a4pmcc7ir51.apps.googleusercontent.com"
+        clientId="967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
         buttonText=" Login with Google "
         theme="dark"
         onSuccess={responseGoogle}
