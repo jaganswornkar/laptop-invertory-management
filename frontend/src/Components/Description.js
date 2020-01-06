@@ -50,17 +50,19 @@ export class Description extends Component {
     if (this.state.maintenance.length > 0) {
       var maintenance = this.state.maintenance.map((e, i) => {
         return (
-          <div key={i} style={{ display: "flex" }}>
-            <div style={{ margin: 20 }}>
-              <Typography align="left">Owner : {e.owner}</Typography>
-              <Typography align="left">Date : {e.date}</Typography>
-              <Typography align="left">Status : {e.status}</Typography>
-            </div>
-            <div style={{ margin: 20 }}>
-              <Divider orientation="vertical" />
-            </div>
-            <div style={{ paddingTop: 16 }}>
-              <Typography title="description">{e.description}</Typography>
+          <div>
+            <div key={i} style={{ display: "flex" }}>
+              <div style={{ margin: 20 }}>
+                <Typography align="left">Owner : {e.owner}</Typography>
+                <Typography align="left">Date : {e.date}</Typography>
+                <Typography align="left">Status : {e.status}</Typography>
+              </div>
+              <div style={{ margin: 20 }}>
+                <Divider orientation="vertical" />
+              </div>
+              <div style={{ paddingTop: 16 }}>
+                <Typography title="description">{e.description}</Typography>
+              </div>
             </div>
             <Divider />
           </div>
@@ -71,10 +73,12 @@ export class Description extends Component {
     if (this.state.owners.length > 0) {
       var owners = this.state.owners.map((e, i) => {
         return (
-          <div key={i} style={{ display: "flex" }}>
-            <div style={{ margin: 20 }}>
-              <Typography align="left">Assigning date : {e.date}</Typography>
-              <Typography align="left">Owner : {e.owner_name}</Typography>
+          <div>
+            <div key={i} style={{ display: "flex" }}>
+              <div style={{ margin: 20 }}>
+                <Typography align="left">Assigning date : {e.date}</Typography>
+                <Typography align="left">Owner : {e.owner_name}</Typography>
+              </div>
             </div>
             <Divider />
           </div>
