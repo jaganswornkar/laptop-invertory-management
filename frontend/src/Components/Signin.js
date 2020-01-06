@@ -3,6 +3,7 @@ import { GoogleLogin } from "react-google-login";
 import { reactLocalStorage } from "reactjs-localstorage";
 import Axios from "axios";
 import { Redirect } from "react-router";
+import Header from "./Header";
 
 export default function Signin() {
   const responseGoogle = response => {
@@ -27,14 +28,17 @@ export default function Signin() {
     return <Redirect to={"/Admin"} />;
   }
   return (
-    <div style={{ display: "flex", justifyContent: "center", margin: 20 }}>
-      <GoogleLogin
-        clientId="967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
-        buttonText=" Login with Google "
-        theme="dark"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-      />
+    <div>
+      <Header headerText="Only admins can login" link="/" text2="back to app" />
+      <div style={{ display: "flex", justifyContent: "center", margin: 20 }}>
+        <GoogleLogin
+          clientId="967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
+          buttonText=" Login with Google "
+          theme="dark"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+        />
+      </div>
     </div>
   );
 }

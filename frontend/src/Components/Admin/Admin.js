@@ -14,6 +14,7 @@ import Axios from "axios";
 import UserAdmin from "./UserAdmin";
 import GetAdmin from "./GetAdmin";
 import RemoveAdmin from "./RemoveAdmin";
+import Header from "../Header";
 
 export class Admin extends Component {
   constructor(props) {
@@ -49,6 +50,11 @@ export class Admin extends Component {
     if (this.state.token) {
       return (
         <div>
+          <Header
+            headerText="Welcome to ng laptop inventoy app Admin page"
+            link="/"
+            text2="back to app"
+          />
           <ActiveStatus />
           <BatteryStatus />
           <Description />

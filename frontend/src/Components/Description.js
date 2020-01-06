@@ -4,6 +4,7 @@ import { files } from "../actions";
 import Axios from "axios";
 import { Card, Typography, List } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
+import Header from "./Header";
 
 export class Description extends Component {
   constructor(props) {
@@ -85,6 +86,11 @@ export class Description extends Component {
     if (this.state.files.length > 0) {
       return (
         <div>
+          <Header
+            headerText="all details about this laptop"
+            link="/"
+            text2="back to app"
+          />
           <Card style={{ margin: 20 }}>
             {file.active ? (
               <Typography
@@ -150,8 +156,12 @@ export class Description extends Component {
                 <Typography>
                   Status : {file.active ? "Active" : "Deactivated"}
                 </Typography>
-                <Typography>IP Address : {file.ip || '---.---.-.--'}</Typography>
-                <Typography>Mac Address : {file.mac || '--:--:--:--:--:--'}</Typography>
+                <Typography>
+                  IP Address : {file.ip || "---.---.-.--"}
+                </Typography>
+                <Typography>
+                  Mac Address : {file.mac || "--:--:--:--:--:--"}
+                </Typography>
               </div>
             </div>
           </Card>
