@@ -33,7 +33,7 @@ export class Laptop_list extends Component {
       return (
         <Card
           key={i}
-          style={{ margin: 20 }}
+          style={{ margin: 30 }}
           onClick={id => {
             this.onClickHandler(e.id);
           }}
@@ -81,7 +81,7 @@ export class Laptop_list extends Component {
     if (this.state.laptopId) {
       return <Redirect to={`/${this.state.laptopId}`} />;
     }
-    return <div style={{ display: "flex", flexWrap: "wrap" }}>{images}</div>;
+    return <div style={{ display: "flex", flexWrap: "wrap", justifyContent:'center' }}>{images}</div>;
   }
 }
 
