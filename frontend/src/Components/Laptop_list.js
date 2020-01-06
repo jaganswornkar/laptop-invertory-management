@@ -55,7 +55,11 @@ export class Laptop_list extends Component {
               <b>Id : {e.id}</b>
             </Typography>
           )}
-          <List key={i} style={{ margin: 10 }}>
+          <List
+            key={i}
+            style={{ margin: 10 }}
+            title="Click here to open details"
+          >
             <a
               href={e.url}
               rel="noopener noreferrer"
