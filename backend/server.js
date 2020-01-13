@@ -318,6 +318,7 @@ app.get("/getOwners/:id", (req, res) => {
 
 // post method to decode token
 app.post("/verifyToken", (req, res) => {
+  // you have to add yor google client id to decode the google token
   const client = new OAuth2Client(
     "967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
   );
