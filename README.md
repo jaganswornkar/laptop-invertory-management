@@ -7,8 +7,9 @@ It also has a private admin page which can be access by only assigned admins (gm
 ## Backend 
 Its backend is written in node js with express module and database used in it is MySQL with Sequelize query and migrations (ORM ). <br/>
 The app is hosted on AWS and has a domain from freenom<br/>
-<code>*check backend directry for more details*</code>
+<code>*check <a href="https://github.com/jagannath-swarnkar/laptop-invertory-management/tree/master/backend">backend</a> directry for more details and execution*</code>
 
 
 ## Frontend
 Frontend is written in React js and desinged with @material-ui and I used Axios as middleware to connect with backend
+<code>*check <a href="https://github.com/jagannath-swarnkar/laptop-invertory-management/tree/master/frontend">frontend</a> directry for more details and execution*</code>
