@@ -15,5 +15,6 @@ Currently the app is running on http://ngapp.ml visit to see.
 4. Launch the development build of the app, by running `npm start` on the terminal.<br/>
 5. Visit http://localhost:3000 to use the app.<br/>
 6. Start the Backend server as well. Go to <b>backend</b> directory of this repo, and after navigating the directory, type `npm install` to install the necessary dependencies. (setup your mysql details, <a href="https://github.com/jagannath-swarnkar/laptop-invertory-management/tree/master/backend" >`Click here for backend`</a> )
-7. Now, you can start your Backend server, by typing `nodemon server.js` or `node server.js`.
+7. Now, you can start your Backend server, by typing `nodemon server.js` or `node server.js`.<br/>
+8. You also need to add you google client details to access google signin in signin component<br/><br/>
 Happy Coding :)
