@@ -6,7 +6,8 @@ It also has a private admin page which can be access by only assigned admins (gm
 
 ## Backend 
 Its backend is written in node js with express module and database used in it is MySQL with Sequelize query and migrations (ORM ). <br/>
-The app is hosted on AWS and has a domain from freenom
+The app is hosted on AWS and has a domain from freenom<br/>
+<code>*check backend directry for more details*</code>
 
 
 ## Frontend
