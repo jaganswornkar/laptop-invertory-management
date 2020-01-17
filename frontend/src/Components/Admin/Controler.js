@@ -65,7 +65,7 @@ export class Controler extends Component {
         <Card style={{ background: "lightgreen", width: 580 }}>
           <Button
             variant="contained"
-            color="primary"
+            style={{ background: "red",color:'white'}}
             fullWidth
             onClick={this.onClickHandler}
           >

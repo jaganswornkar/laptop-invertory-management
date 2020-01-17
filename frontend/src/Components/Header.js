@@ -39,7 +39,7 @@ export default function Header(props) {
             {props.headerText}
           </Typography>
           <Link to={props.link} style={{ textDecoration: "none" }}>
-            <Button  style={{ background: "white", color: "blue" }}>
+            <Button style={{ background: "white", color: "blue" }}>
               <b>{props.text2}</b>
             </Button>
           </Link>

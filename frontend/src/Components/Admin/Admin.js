@@ -15,6 +15,7 @@ import UserAdmin from "./UserAdmin";
 import GetAdmin from "./GetAdmin";
 import RemoveAdmin from "./RemoveAdmin";
 import Header from "../Header";
+import { Button } from "@material-ui/core";
 
 export class Admin extends Component {
   constructor(props) {
@@ -46,6 +47,12 @@ export class Admin extends Component {
       });
   }
 
+  logout = () => {
+    console.log("logiout");
+    reactLocalStorage.clear("token", "");
+    window.location.reload();
+  };
+
   render() {
     if (this.state.token) {
       return (
@@ -55,6 +62,12 @@ export class Admin extends Component {
             link="/"
             text2="back to app"
           />
+          <Button
+            style={{ background: "red", margin: "10px", color: "white" }}
+            onClick={this.logout}
+          >
+            logout
+          </Button>
           <ActiveStatus />
           <BatteryStatus />
           <Description />
