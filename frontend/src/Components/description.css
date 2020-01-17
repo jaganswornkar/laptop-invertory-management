@@ -1,0 +1,16 @@
+.desc_div {
+    display: flex;
+}
+.main_card   {
+    margin:20px;
+}
+
+@media only screen and (max-width: 706px) {
+    .desc_div {
+        display: inline-block;
+    }
+    .main_card   {
+        margin:20px auto;
+        width: fit-content;
+    }
+  }

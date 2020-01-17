@@ -5,6 +5,7 @@ import Axios from "axios";
 import { Card, Typography, List } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import Header from "./Header";
+import './description.css'
 
 export class Description extends Component {
   constructor(props) {
@@ -95,7 +96,7 @@ export class Description extends Component {
             link="/"
             text2="back to app"
           />
-          <Card style={{ margin: 20 }}>
+          <Card className="main_card" >
             {file.active ? (
               <Typography
                 align="right"
@@ -117,7 +118,7 @@ export class Description extends Component {
                 <b>Id : {file.id}</b>
               </Typography>
             )}
-            <div style={{ display: "flex" }}>
+            <div className="desc_div" >
               <div>
                 <List style={{ margin: 10 }}>
                   <a
