@@ -336,20 +336,24 @@ app.post("/verifyToken", (req, res) => {
         where: { email: userid }
       })
       .then(data => {
-        if (data.length > 0 || userid === 'jagannath18@navgurukul.org') {
+        if (data.length > 0 || userid === "jagannath18@navgurukul.org") {
           console.log("login successfull");
           res.json(data);
         } else {
           res.json("err");
         }
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        res.send("err");
+        console.error("err,err", err);
+      });
   }
-  verify().catch(console.error);
+  verify().catch(res.send("err"));
 });
 
-// check the token for expire
+// endpoint to check the token is valid or not
 app.post("/checkToken", (req, res) => {
+  console.log(req.body.token);
   const client = new OAuth2Client(
     "967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
   );
@@ -361,9 +365,26 @@ app.post("/checkToken", (req, res) => {
     });
     const payload = ticket.getPayload();
     const userid = payload["email"];
-    res.json(userid);
+    // write your code here--------
+    db.admins
+      .findAll({
+        raw: true,
+        where: { email: userid }
+      })
+      .then(data => {
+        if (data.length > 0 || userid === "jagannath18@navgurukul.org") {
+          console.log("login successfull");
+          res.json(data);
+        } else {
+          res.json("err");
+        }
+      })
+      .catch(err => {
+        res.send("err");
+        console.error("err,err", err);
+      });
   }
-  verify().catch(console.error);
+  verify().catch(res.send("err"));
 });
 
 app.listen((PORT = 8001), () => {

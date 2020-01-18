@@ -25,38 +25,26 @@ export class Admin extends Component {
       token: false
     };
   }
+
   UNSAFE_componentWillMount() {
-    const token = reactLocalStorage.get("token");
-    if (token !== undefined) {
-      this.setState({ token: true });
-    }else{
-      Axios.post("http://13.234.154.77:8001/checkToken", { token: token })
-      .then(data => {
-        if (data.data === undefined) {
-          reactLocalStorage.clear("token", "");
-          this.setState({ token: false });
-        }
-      })
-      .catch(err => {
-        reactLocalStorage.clear("token", "");
-        this.setState({ token: false });
-        console.log(err);
-      });
-    }
-  }
-  componentDidMount() {
     const token = reactLocalStorage.get("token");
     Axios.post("http://13.234.154.77:8001/checkToken", { token: token })
       .then(data => {
-        if (data.data === undefined) {
-          reactLocalStorage.clear("token", "");
-          this.setState({ token: false });
+        console.log("data :", data, "data.data :", data.data);
+        if (
+          data.data === undefined ||
+          data === undefined ||
+          data === "err" ||
+          data.data === "err"
+        ) {
+          console.log("wrong credentials");
+        } else {
+          console.log("login successfull");
+          this.setState({ token: true });
         }
       })
       .catch(err => {
-        reactLocalStorage.clear("token", "");
-        this.setState({ token: false });
-        console.log(err);
+        console.log("error in verifying token in admin page :", err);
       });
   }
 

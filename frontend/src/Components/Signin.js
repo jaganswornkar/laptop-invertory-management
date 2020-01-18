@@ -4,6 +4,7 @@ import { reactLocalStorage } from "reactjs-localstorage";
 import Axios from "axios";
 import { Redirect } from "react-router";
 import Header from "./Header";
+import Admin from "./Admin/Admin";
 
 export default function Signin() {
   const responseGoogle = response => {
@@ -12,7 +13,12 @@ export default function Signin() {
     // console.log(token)
     Axios.post("http://13.234.154.77:8001/verifyToken", { token: token })
       .then(data => {
-        if (data.data !== "err") {
+        if (
+          data.data === undefined ||
+          data === undefined ||
+          data === "err" ||
+          data.data === "err"
+        ) {
           // console.log("login successful");
           reactLocalStorage.set("token", token);
           window.location.reload();
@@ -23,9 +29,26 @@ export default function Signin() {
       })
       .catch(err => console.error(err));
   };
-
   if (reactLocalStorage.get("token")) {
-    return <Redirect to={"/Admin"} />;
+    const token = reactLocalStorage.get("token");
+    Axios.post("http://13.234.154.77:8001/verifyToken", { token: token })
+      .then(data => {
+        if (
+          data.data === undefined ||
+          data === undefined ||
+          data === "err" ||
+          data.data === "err"
+        ) {
+          reactLocalStorage.clear("token", "");
+          console.log("wrong credentials", token);
+        } else {
+          console.log("Login successfull");
+          return <Redirect to={"/Admin"} />;
+        }
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
   }
   return (
     <div>
