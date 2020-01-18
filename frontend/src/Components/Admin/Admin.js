@@ -29,6 +29,19 @@ export class Admin extends Component {
     const token = reactLocalStorage.get("token");
     if (token !== undefined) {
       this.setState({ token: true });
+    }else{
+      Axios.post("http://13.234.154.77:8001/checkToken", { token: token })
+      .then(data => {
+        if (data.data === undefined) {
+          reactLocalStorage.clear("token", "");
+          this.setState({ token: false });
+        }
+      })
+      .catch(err => {
+        reactLocalStorage.clear("token", "");
+        this.setState({ token: false });
+        console.log(err);
+      });
     }
   }
   componentDidMount() {
