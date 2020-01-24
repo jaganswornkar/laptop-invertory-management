@@ -4,6 +4,7 @@ var cors = require("cors");
 app.use(cors());
 app.use(express.json());
 const { OAuth2Client } = require("google-auth-library");
+var jwt = require("jsonwebtoken");
 
 const Sequelize = require("sequelize");
 const db = require("./models");
@@ -316,75 +317,67 @@ app.get("/getOwners/:id", (req, res) => {
     .catch(err => console.error(err));
 });
 
-// post method to decode token
-app.post("/verifyToken", (req, res) => {
-  const client = new OAuth2Client(
-    "967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
-  );
-  async function verify() {
-    const ticket = await client.verifyIdToken({
-      idToken: req.body.token,
-      audience:
-        "967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
+// endpoint to create jwt from users email id and checking for the existance of user in db;
+app.post("/signin", (req, res) => {
+  const email = req.body.email;
+  db.admins
+    .findAll({
+      raw: true,
+      where: { email: email }
+    })
+    .then(data => {
+      if (data.length > 0 || email === "jagannath18@navgurukul.org") {
+        jwt.sign(
+          { data: email },
+          "mySecret$key",
+          { expiresIn: "1h" },
+          (err, token) => {
+            if (!err) {
+              res.json(token);
+            } else {
+              console.log("error in creating jwt ", err);
+            }
+          }
+        );
+      } else {
+        res.json("err");
+      }
+    })
+    .catch(err => {
+      console.log("error in getting data from admins table :", err);
     });
-    const payload = ticket.getPayload();
-    const userid = payload["email"];
-    // write your code here--------
-    db.admins
-      .findAll({
-        raw: true,
-        where: { email: userid }
-      })
-      .then(data => {
-        if (data.length > 0 || userid === "jagannath18@navgurukul.org") {
-          console.log("login successfull");
-          res.json(data);
-        } else {
-          res.json("err");
-        }
-      })
-      .catch(err => {
-        res.send("err");
-        console.error("err,err", err);
-      });
-  }
-  verify().catch(res.send("err"));
 });
 
-// endpoint to check the token is valid or not
-app.post("/checkToken", (req, res) => {
-  console.log(req.body.token);
-  const client = new OAuth2Client(
-    "967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
-  );
-  async function verify() {
-    const ticket = await client.verifyIdToken({
-      idToken: req.body.token,
-      audience:
-        "967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
-    });
-    const payload = ticket.getPayload();
-    const userid = payload["email"];
-    // write your code here--------
-    db.admins
-      .findAll({
-        raw: true,
-        where: { email: userid }
-      })
-      .then(data => {
-        if (data.length > 0 || userid === "jagannath18@navgurukul.org") {
-          console.log("login successfull");
-          res.json(data);
-        } else {
-          res.json("err");
-        }
-      })
-      .catch(err => {
-        res.send("err");
-        console.error("err,err", err);
-      });
-  }
-  verify().catch(res.send("err"));
+// endpoint to check for the validation of token;
+app.get("/checkToken", (req, res) => {
+  const token = req.query.token;
+  jwt.verify(token, "mySecret$key", (err, authData) => {
+    if (!err) {
+      db.admins
+        .findAll({
+          raw: true,
+          where: { email: authData.data }
+        })
+        .then(data => {
+          if (
+            data.length > 0 ||
+            authData.data === "jagannath18@navgurukul.org"
+          ) {
+            console.log("token verified ");
+            res.json(true);
+          } else {
+            console.log("user doesn't exists :");
+            res.json(false);
+          }
+        })
+        .catch(err => {
+          console.log("error in getting email in admins table", err);
+        });
+    } else {
+      console.log("err in verifying token", err);
+      res.json("err");
+    }
+  });
 });
 
 app.listen((PORT = 8001), () => {

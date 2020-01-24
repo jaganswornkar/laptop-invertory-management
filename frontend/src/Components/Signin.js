@@ -4,23 +4,21 @@ import { reactLocalStorage } from "reactjs-localstorage";
 import Axios from "axios";
 import { Redirect } from "react-router";
 import Header from "./Header";
-import Admin from "./Admin/Admin";
 
 export default function Signin() {
   const responseGoogle = response => {
-    // console.log(response)
-    const token = response.tokenObj.id_token;
-    // console.log(token)
-    Axios.post("http://13.234.154.77:8001/verifyToken", { token: token })
+    const email = response.profileObj.email;
+    console.log(email);
+    Axios.post("http://13.234.154.77:8001/signin", { email: email })
       .then(data => {
+        console.log(data.data);
         if (
-          data.data === undefined ||
-          data === undefined ||
-          data === "err" ||
-          data.data === "err"
+          data.data !== undefined ||
+          data !== undefined ||
+          data !== "err" ||
+          data.data !== "err"
         ) {
-          // console.log("login successful");
-          reactLocalStorage.set("token", token);
+          reactLocalStorage.set("token", data.data);
           window.location.reload();
         } else {
           reactLocalStorage.clear("token", "");
@@ -29,33 +27,17 @@ export default function Signin() {
       })
       .catch(err => console.error(err));
   };
+
   if (reactLocalStorage.get("token")) {
-    const token = reactLocalStorage.get("token");
-    Axios.post("http://13.234.154.77:8001/verifyToken", { token: token })
-      .then(data => {
-        if (
-          data.data === undefined ||
-          data === undefined ||
-          data === "err" ||
-          data.data === "err"
-        ) {
-          reactLocalStorage.clear("token", "");
-          console.log("wrong credentials", token);
-        } else {
-          console.log("Login successfull");
-          return <Redirect to={"/Admin"} />;
-        }
-      })
-      .catch(err => {
-        console.log("err", err);
-      });
+    return <Redirect to={"/Admin"} />;
   }
   return (
     <div>
       <Header headerText="Only admins can login" link="/" text2="back to app" />
       <div style={{ display: "flex", justifyContent: "center", margin: 20 }}>
         <GoogleLogin
-          clientId="967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"
+          clientId="967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"         // ngapp.ml
+          // clientId="708025200012-3tqtvlbso9v1a19ehenektuanvoattun.apps.googleusercontent.com"      // localhost
           buttonText=" Login with Google "
           theme="dark"
           onSuccess={responseGoogle}

@@ -15,7 +15,7 @@ import UserAdmin from "./UserAdmin";
 import GetAdmin from "./GetAdmin";
 import RemoveAdmin from "./RemoveAdmin";
 import Header from "../Header";
-import { Button } from "@material-ui/core";
+import { Button, LinearProgress } from "@material-ui/core";
 
 export class Admin extends Component {
   constructor(props) {
@@ -26,18 +26,16 @@ export class Admin extends Component {
     };
   }
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     const token = reactLocalStorage.get("token");
-    Axios.post("http://13.234.154.77:8001/checkToken", { token: token })
+    Axios.get("http://13.234.154.77:8001/checkToken", { params: { token: token } })
       .then(data => {
-        console.log("data :", data, "data.data :", data.data);
-        if (
-          data.data === undefined ||
-          data === undefined ||
-          data === "err" ||
-          data.data === "err"
-        ) {
+        console.log("data.data :", data.data);
+        if (data.data === false || data.data === "err") {
           console.log("wrong credentials");
+          window.alert(' wrong credentials :( \n or This user do not has access to Admin page :(')
+          reactLocalStorage.clear('token','')
+          window.location = "http://13.234.154.77:3000/signin";
         } else {
           console.log("login successfull");
           this.setState({ token: true });
@@ -83,7 +81,9 @@ export class Admin extends Component {
         </div>
       );
     } else {
-      return <Redirect to={"/signin"} />;
+      // return <Redirect to={"/signin"} />;
+      return (<><LinearProgress color="secondary" />
+      </>)
     }
   }
 }
