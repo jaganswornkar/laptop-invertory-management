@@ -35,7 +35,7 @@ export class Admin extends Component {
           console.log("wrong credentials");
           window.alert(' wrong credentials :( \n or This user do not has access to Admin page :(')
           reactLocalStorage.clear('token','')
-          window.location = "http://13.234.154.77:3000/signin";
+          window.location = "http://ngapp.ml/signin";
         } else {
           console.log("login successfull");
           this.setState({ token: true });
