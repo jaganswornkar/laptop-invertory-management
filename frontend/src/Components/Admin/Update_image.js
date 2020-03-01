@@ -9,7 +9,7 @@ export class Update_image extends Component {
     this.state = {
       id: "",
       image: "",
-      toggle:false
+      toggle: false
     };
   }
 
@@ -23,9 +23,7 @@ export class Update_image extends Component {
 
   onSubmitHandler = () => {
     if (this.state.id.length > 0) {
-    //   Axios.post("http://13.234.154.77:8001/newImage", { data: this.state })
-    Axios.post("http://localhost:8001/newImage", { data: this.state })
-
+      Axios.post("http://13.234.154.77:8001/newImage", { data: this.state })
         .then(data => {
           console.log("new image uploaded");
           this.setState({ id: "", image: "" });
