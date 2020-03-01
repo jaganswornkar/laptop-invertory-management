@@ -90,7 +90,7 @@ export class Description extends Component {
     const file = this.state.files[0];
     if (this.state.files.length > 0) {
       return (
-        <div>
+        <div style={{marginTop:'50px'}}>
           <Header
             headerText="all details about this laptop"
             link="/"

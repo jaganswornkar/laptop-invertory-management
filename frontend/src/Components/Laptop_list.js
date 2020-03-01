@@ -10,6 +10,7 @@ export class Laptop_list extends Component {
     super(props);
     this.state = {
       List: [],
+      cloneList:[],
       laptopId: ""
     };
   }
@@ -17,10 +18,20 @@ export class Laptop_list extends Component {
   componentDidMount() {
     Axios.get("http://13.234.154.77:8001/getList")
       .then(data => {
-        this.setState({ List: data.data });
+        this.setState({ List: data.data, cloneList:data.data });
         this.props.files("GET_FILES", data.data);
       })
       .catch(err => console.error(err));
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.filterClick) {
+      let filteredData = this.state.cloneList.filter(
+        e => e.active === parseInt(nextProps.filterClick)
+      );
+      this.setState({List:filteredData})
+    }else{
+      this.setState({List:this.state.cloneList})
+    }
   }
 
   onClickHandler = id => {
@@ -81,7 +92,13 @@ export class Laptop_list extends Component {
     if (this.state.laptopId) {
       return <Redirect to={`/${this.state.laptopId}`} />;
     }
-    return <div style={{ display: "flex", flexWrap: "wrap", justifyContent:'center' }}>{images}</div>;
+    return (
+      <div
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+      >
+        {images}
+      </div>
+    );
   }
 }
 

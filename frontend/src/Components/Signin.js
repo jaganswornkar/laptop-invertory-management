@@ -32,7 +32,7 @@ export default function Signin() {
     return <Redirect to={"/Admin"} />;
   }
   return (
-    <div>
+    <div style={{marginTop:'50px'}}>
       <Header headerText="Only admins can login" link="/" text2="back to app" />
       <div style={{ display: "flex", justifyContent: "center", margin: 20 }}>
         <GoogleLogin

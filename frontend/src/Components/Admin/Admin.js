@@ -55,7 +55,7 @@ export class Admin extends Component {
   render() {
     if (this.state.token) {
       return (
-        <div>
+        <div style={{marginTop:'50px'}}>
           <Header
             headerText="Welcome to ng laptop inventoy app Admin page"
             link="/"
