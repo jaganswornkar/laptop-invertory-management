@@ -258,6 +258,27 @@ app.post("/newIP", (req, res) => {
     .catch(err => console.error(err));
 });
 
+// update new Image
+app.post("/newImage", (req, res) => {
+  // console.log(req.body.data);
+  db.laptops
+    .update(
+      {
+        image: req.body.data.image
+      },
+      {
+        raw: true,
+        where: { id: parseInt(req.body.data.id) }
+      }
+    )
+    .then(data => {
+      console.log("new image updated");
+      res.json(data);
+    })
+    .catch(err => console.error(err));
+});
+
+
 // get method to get all laptop details
 app.get("/getList", (req, res) => {
   db.laptops

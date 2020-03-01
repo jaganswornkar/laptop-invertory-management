@@ -90,7 +90,7 @@ export class Laptop_list extends Component {
       );
     });
     if (this.state.laptopId) {
-      return <Redirect to={`/${this.state.laptopId}`} />;
+      return <Redirect to={`/home/${this.state.laptopId}`} />;
     }
     return (
       <div

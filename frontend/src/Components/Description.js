@@ -12,7 +12,7 @@ export class Description extends Component {
     super(props);
 
     this.state = {
-      files: [],
+      files: [],  
       maintenance: [],
       owners: []
     };
@@ -93,7 +93,7 @@ export class Description extends Component {
         <div style={{marginTop:'50px'}}>
           <Header
             headerText="all details about this laptop"
-            link="/"
+            link="/home"
             text2="back to app"
           />
           <Card className="main_card" >

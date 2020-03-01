@@ -32,11 +32,15 @@ export default function Signin() {
     return <Redirect to={"/Admin"} />;
   }
   return (
-    <div style={{marginTop:'50px'}}>
-      <Header headerText="Only admins can login" link="/" text2="back to app" />
+    <div style={{ marginTop: "50px" }}>
+      <Header
+        headerText="Only admins can login"
+        link="/home"
+        text2="back to app"
+      />
       <div style={{ display: "flex", justifyContent: "center", margin: 20 }}>
         <GoogleLogin
-          clientId="967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com"         // ngapp.ml
+          clientId="967857975367-jub8m2slcbggvqhp6hbepaodsadavsoc.apps.googleusercontent.com" // ngapp.ml
           // clientId="708025200012-3tqtvlbso9v1a19ehenektuanvoattun.apps.googleusercontent.com"      // localhost
           buttonText=" Login with Google "
           theme="dark"

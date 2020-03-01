@@ -14,6 +14,7 @@ import Axios from "axios";
 import UserAdmin from "./UserAdmin";
 import GetAdmin from "./GetAdmin";
 import RemoveAdmin from "./RemoveAdmin";
+import Update_image from "./Update_image";
 import Header from "../Header";
 import { Button, LinearProgress } from "@material-ui/core";
 
@@ -58,7 +59,7 @@ export class Admin extends Component {
         <div style={{marginTop:'50px'}}>
           <Header
             headerText="Welcome to ng laptop inventoy app Admin page"
-            link="/"
+            link="/home"
             text2="back to app"
           />
           <Button
@@ -74,6 +75,7 @@ export class Admin extends Component {
           <UpdateMac />
           <Owner />
           <Maintenance />
+          <Update_image />
           <Controler />
           <GetAdmin />
           <UserAdmin />
