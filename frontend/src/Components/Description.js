@@ -94,7 +94,7 @@ export class Description extends Component {
           <Header
             headerText="all details about this laptop"
             link="/home"
-            text2="back to app"
+            text2="Home"
           />
           <Card className="main_card" >
             {file.active ? (

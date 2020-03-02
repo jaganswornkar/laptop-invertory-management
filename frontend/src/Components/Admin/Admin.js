@@ -60,7 +60,7 @@ export class Admin extends Component {
           <Header
             headerText="Welcome to ng laptop inventoy app Admin page"
             link="/home"
-            text2="back to app"
+            text2="Home"
           />
           <Button
             style={{ background: "red", margin: "10px", color: "white" }}

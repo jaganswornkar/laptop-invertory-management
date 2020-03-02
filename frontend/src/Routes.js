@@ -5,6 +5,7 @@ import Admin from './Components/Admin/Admin';
 import { Description } from './Components/Description';
 import Signin from './Components/Signin';
 import Error from './Components/Error';
+import About from './Components/About';
 
 
 
@@ -17,6 +18,7 @@ class Routes extends Component {
           <Route path='/home' exact component={App} />
           <Route path='/Admin' exact component={Admin} />
           <Route path='/signin' exact component={Signin} />
+          <Route path='/About' exact component={About} />
           <Route path='/home/:id' exact component={Description} />
           <Route component={Error} />
 

@@ -3,12 +3,13 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import {
   Button,
-  Menu,
+  Divider,
   MenuItem,
   Typography,
   IconButton,
   Toolbar,
   AppBar,
+  Drawer,
   makeStyles
 } from "@material-ui/core";
 
@@ -26,22 +27,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function Header(props) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const [drawer, setDrawer] = React.useState(false);
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{position:'fixed', marginTop:'-50px'}}>
+      <AppBar
+        position="static"
+        style={{ position: "fixed", marginTop: "-50px" }}
+      >
         <Toolbar variant="dense">
           <IconButton
-            onClick={handleClick}
+            onClick={() => setDrawer(true)}
             edge="start"
             className={classes.menuButton}
             color="inherit"
@@ -49,17 +45,73 @@ export default function Header(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={()=>{handleClose(); props.filterClick('')}}>All Laptops</MenuItem>
-            <MenuItem onClick={()=>{handleClose(); props.filterClick('1')}}>All Active Laptops</MenuItem>
-            <MenuItem onClick={()=>{handleClose(); props.filterClick('0')}}>All Damaged Laptops</MenuItem>
-          </Menu>
+          <Drawer open={drawer} onClose={() => setDrawer(false)}>
+            <MenuItem>
+              <div style={{ height: "40px" }}>
+                <img
+                  src="https://navgurukul.org/assets/img/logo.png"
+                  alt="Navgurukul"
+                  height="100%"
+                />
+              </div>
+            </MenuItem>
+            <Divider />
+            <Link to="/home" style={{ textDecoration: "none" }}>
+              <MenuItem>
+                <div style={{ marginTop: "10px" }}>
+                  <b>Home</b>
+                </div>
+              </MenuItem>
+            </Link>
+            <Divider />
+            <MenuItem
+              style={{ marginTop: "20px" }}
+              onClick={() => {
+                setDrawer(false);
+                props.filterClick("");
+              }}
+            >
+              All Laptops
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                setDrawer(false);
+                props.filterClick("1");
+              }}
+            >
+              All Active Laptops
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                setDrawer(false);
+                props.filterClick("0");
+              }}
+            >
+              All Damaged Laptops
+            </MenuItem>
+            <Divider />
+            <MenuItem>
+              <div style={{ height: "10px" }}></div>
+            </MenuItem>
+            <Link to="/Admin" style={{ textDecoration: "none" }}>
+              <MenuItem>
+                <b>Admin Page</b>
+              </MenuItem>
+            </Link>
+            <div
+              style={{
+                position: "absolute",
+                width: "100%",
+                bottom: 0,
+                height: "50px"
+              }}
+            >
+              <Divider />
+              <Link to="/About" style={{ textDecoration: "none" }}>
+                <MenuItem>About</MenuItem>
+              </Link>
+            </div>
+          </Drawer>
           <Typography variant="h6" className={classes.title} align="left">
             {props.headerText}
           </Typography>
